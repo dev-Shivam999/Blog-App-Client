@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.light-cart {
+    top: 100%;
+    transition: 2s;
+    background-color: rgba(245, 245, 245, 0.455);
+}
+
+.Cart:hover .light-cart {
+    transition: 2s;
+    top: 0;
+}
+
+.fot:hover .t {
+    display: block;
+}
+
+.w {
+    width: 0px;
+    border: 0;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: rgb(30, 28, 28);
+    color: white;
+}
+
+.ho:hover .w {
+padding-inline: 6px;
+    width: 95%;
+    height: 90%;
+    transition: 2s;
+    transform-origin: left;
+}
