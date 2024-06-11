@@ -43,7 +43,7 @@ const Blogs = () => {
 
             </div>
             {
-                loading ? <div>loading..</div> : blogs && blogs.length > 0 && blogs.map(p => <BlogCard key={p.id} authorName={p.authore.name} authorPic={p.authore.img} content={p.content} publishedDate={p.created} id={p.id} title={p.title} avatar={p.avtar} />
+                loading ? <div>loading..</div> : blogs && blogs.length > 0 && blogs.map(p => <BlogCard key={p.id} Like={p.Link} authorName={p.authore.name} authorPic={p.authore.img} content={p.content} publishedDate={p.created} id={p.id} title={p.title} avatar={p.avtar} />
                 )
             }
         </div>

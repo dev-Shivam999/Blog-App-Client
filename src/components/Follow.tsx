@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const Follow = ({f,c}:{f:string,c:number}) => {
     return (

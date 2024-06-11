@@ -1,5 +1,4 @@
 import axios from 'axios';
-import React from 'react';
 import { MdDelete } from 'react-icons/md';
 import toast from 'react-hot-toast';
 

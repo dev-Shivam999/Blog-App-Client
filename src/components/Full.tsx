@@ -1,7 +1,7 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 
-const Full = ({ title, content, authorName, authorPic, img, avatar, id, publishedDate }: BlogCard) => {
+const Full = ({ title, content, authorName, img, avatar, id, publishedDate, }: BlogCard) => {
     const date = new Date(publishedDate)
     const Month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -23,7 +23,7 @@ const Full = ({ title, content, authorName, authorPic, img, avatar, id, publishe
                     <div className='col-span-3   p-5 rounded-lg'>
                         <Link to={`/BloggerProfile/${id}`}> Author</Link>
                         <Link to={`/BloggerProfile/${id}`}  className='text-2xl font-bold sm:text-5xl flex gap-2'>
-                            <img src={`http://localhost:3000${img}`} className='w-[10vw] h-[10vw] rounded-full object-cover object-top' alt="" />  <div>  {authorName}</div>
+                            <img src={`http://localhost:3000${img}`} className='w-[10vw] h-[10vw] rounded-full object-cover object-top' alt="" />  <div>  {authorName.length>10?authorName.slice(0,10)+"..":authorName}</div>
                         </Link>
                     </div>
                     <div className='col-span-9  p-5 rounded-lg '>

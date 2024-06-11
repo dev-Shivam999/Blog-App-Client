@@ -16,7 +16,8 @@ interface BlogCard {
     publishedDate: string,
     avatar: string,
     img?: string
-    type?:string
+    type?: string
+    Like: Link[]
 
 }
 
@@ -24,7 +25,7 @@ interface blogs {
     id: string,
     title: string,
     content: string,
-
+    Link: Link[]
     created: string,
     authoreId: string,
     avtar: string
@@ -38,31 +39,33 @@ interface blog {
     id: string,
     title: string,
     content: string,
-
     created: string,
     authoreId: string,
     avtar: string
-    
-}
+    Link: Link[],
 
+}
+type Link={
+    blogerId:string
+}
 interface user {
     name: string,
     img: string
     data: number
     id: number
-    blogs: blog[]
+    blogs: blog[],
     Followers: [],
     Following: [],
 
 }
 interface InitialState2 {
 
-   b:{
-     blogs: blogs[],
-    loading: boolean,
-    val: boolean,
-}
-c:Info2
+    b: {
+        blogs: blogs[],
+        loading: boolean,
+        val: boolean,
+    }
+    c: Info2
 
 }
 interface InitialState {

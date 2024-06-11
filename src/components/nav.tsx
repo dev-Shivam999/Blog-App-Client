@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import  { memo, useState } from 'react';
 import { FaEquals, FaX } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 

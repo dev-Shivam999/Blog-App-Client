@@ -1,4 +1,4 @@
-import React from 'react';
+
 import MakeFollow from './MakeFollow';
 import toast from 'react-hot-toast';
 

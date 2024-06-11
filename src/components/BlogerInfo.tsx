@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 const BloggerInfo = () => {
     const p = "            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet harum adipisci reiciendis. Autem, ipsa odio minus porro consequatur, est ut inventore tempora illum hic quae, temporibus nobis enim deleniti quasi"

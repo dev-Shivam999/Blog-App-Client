@@ -1,0 +1,117 @@
+.heart {
+  position: relative;
+  display:block;
+  
+  padding: 0;
+  background:none;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  transform: scale(1);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.64, 0.57, 0.67, 1.53);
+  transition-duration: 0.1s;
+  svg {
+    stroke: red;
+    &.full {
+      fill: none;
+      stroke: red;
+    }
+    &.heartfiller {
+      fill: red;
+      position:absolute;
+      transform: scale(0, 0);
+      left:0;
+      top:0;
+      display:none;
+    }
+    &.left {
+      fill: red;
+      position: absolute;
+      display:none;
+      top:0;
+    }
+    &.right {
+      fill: rgb(219, 29, 29);
+      position: absolute;
+      display:none;
+      top:0;
+      right:0;
+    }
+  }
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.filled {
+  svg {
+    &.heartfiller {
+        margin-top: 10px;
+      display: block;
+      transform: scale(1, 1);
+      animation-duration: 0.5s;
+      animation-name: growHeart;
+    }
+  }
+}
+
+@keyframes growHeart {
+  0% {
+    opacity:0;
+    transform: scale(0, 0);
+  }
+  100% {
+    opacity:1;
+    transform: scale(1, 1);
+  }
+}
+
+.notFilled {
+  svg {
+  &.full {
+    fill:none;
+    stroke:grey;
+  }
+  &.left {
+    display: block;
+    transform: translate(-20px, 20px) rotate(-45deg);
+    opacity: 0;
+    animation-duration: 1s;
+    animation-name: heartbreakLeft;
+  }
+  &.right {
+    display: block;
+    transform: translate(20px, 20px) rotate(45deg);
+    opacity: 0;
+    animation-duration: 1s;
+    animation-name: heartbreakRight;
+  }
+  }
+}
+
+
+@keyframes heartbreakLeft {
+  from {
+    opacity: 1;
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-20px, 20px) rotate(-45deg);
+  }
+}
+
+@keyframes heartbreakRight {
+  /* 50% {} */
+  from {
+    opacity: 1;
+     transform: translate(0px, 0px) rotate(0deg);
+  }
+
+  to {
+    opacity: 0;
+     transform: translate(20px, 20px) rotate(45deg);
+  }
+}

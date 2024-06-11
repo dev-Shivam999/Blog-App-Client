@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Follow from './Follow';
 import BloggerInfo from './BlogerInfo';
@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { setLoading } from '../store/Bl';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 
 const Pro = ({show}:{show:true|false}) => {
     const { id } = useParams()
@@ -17,7 +18,7 @@ const Pro = ({show}:{show:true|false}) => {
     const dispatch = useDispatch()
     useEffect(() => {
 
-        axios.post(`http://localhost:3000/user/profile`, "none", {
+      axios.post(`http://localhost:3000/user/profile`, "none", {
             headers: {
                 "Authorization": Number(localStorage.getItem('token')),
                 "Lol": Number(id),
@@ -25,11 +26,23 @@ const Pro = ({show}:{show:true|false}) => {
             }
         }).then(
             res => {
-                if (res.data.message == true) {
-                    navigate('/profile')
-                }
-                dispatch(setLoading({ user: res.data.message.user, data: res.data.message.data, Loading: false }))
+               if (res.data.success) {
+                   if (res.data.message == true) {
+                       navigate('/profile')
+                   }
+                   
+                   
+                   dispatch(setLoading({ user: res.data.message.user, data: res.data.message.data, Loading: false }))
 
+               }else{
+                toast.error(res.data.message,{
+                    style:{
+                        border:'5px solid red',
+                        borderRadius:5
+                    }
+                })
+                navigate('/signup')
+               }
 
 
 
@@ -38,6 +51,9 @@ const Pro = ({show}:{show:true|false}) => {
 
     }, [])
     const { Loading, user } = useSelector((state: InitialState2) => state.c)
+  
+    
+
 
   
     return (
@@ -66,15 +82,16 @@ const Pro = ({show}:{show:true|false}) => {
                               {
                                     show ? <EditsProfile />:<Fm />
                               }
-                                <div>
-                                    <div className=' mt-3 text-center md:mt-14 sm:mt-6 md:text-center text-3xl font-bold font-math'>{show?"Your":"Their"} Blogs</div>
-                                </div>
+                               
 
                             </div>
 
                         </div><div className='w-full'>
+                            <div>
+                                <div className=' mt-3 text-center md:mt-14 sm:mt-6 md:text-center text-3xl font-bold font-math'>{show ? "Your" : "Their"} Blogs</div>
+                            </div>
                             {
-                                user?.blogs && user?.blogs && user?.blogs.map(blog => <BlogCard authorName={user?.name} authorPic={user?.img}  type={String(lo)} avatar={blog.avtar} content={blog.content} publishedDate={blog.created} title={blog.title} id={blog.id} img={blog.avtar} key={blog.id} />)
+                                user?.blogs && user?.blogs && user?.blogs.map(blog => <BlogCard authorName={user?.name} Like={blog.Link}  authorPic={user?.img}  type={String(lo)} avatar={blog.avtar} content={blog.content} publishedDate={blog.created} title={blog.title} id={blog.id} img={blog.avtar} key={blog.id} />)
                             }
                          
                         </div>
