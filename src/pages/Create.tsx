@@ -1,8 +1,9 @@
 
+import { memo } from 'react';
 import From from '../components/from';
 import { Link } from 'react-router-dom';
 
-const Create = () => {
+const Create = memo(() => {
 
    
     
@@ -18,6 +19,6 @@ const Create = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Create;

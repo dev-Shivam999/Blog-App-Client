@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React, { memo, useRef } from 'react';
 import { FaCamera } from 'react-icons/fa6';
 
-const Setimg = ({ fo, im }: { fo: string, im: (e: React.ChangeEvent<HTMLInputElement>) => void }) => {
+const Setimg = memo(({ fo, im }: { fo: string, im: (e: React.ChangeEvent<HTMLInputElement>) => void }) => {
     const img = useRef<HTMLInputElement | null>(null)
 
     return (
@@ -16,6 +16,6 @@ const Setimg = ({ fo, im }: { fo: string, im: (e: React.ChangeEvent<HTMLInputEle
            
         </div>
     );
-};
+});
 
 export default Setimg;

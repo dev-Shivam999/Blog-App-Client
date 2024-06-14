@@ -1,8 +1,9 @@
 
 import Quote from '../components/Quote';
 import Auth from '../components/Auth';
+import { memo } from 'react';
 
-const Sign = () => {
+const Sign = memo(() => {
     return (
         <div className='sm:text-3xl  grid md:grid-cols-2 grid-cols-1 font-bold'>
             <div className='h-screen '>
@@ -13,7 +14,7 @@ const Sign = () => {
             </div>
         </div>
     );
-};
+});
 
 
 export default Sign;

@@ -1,13 +1,14 @@
 
 
+import { memo } from 'react';
 import Pro from '../components/Pro';
 
-const BloggerProfile = () => {
+const BloggerProfile = memo(() => {
  
 
     return (
      <Pro show={false}/>
     );
-};
+});
 
 export default BloggerProfile;

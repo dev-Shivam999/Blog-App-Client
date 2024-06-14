@@ -10,16 +10,17 @@ const initialState: InitialState2 = {
         loading: true,
         val: false
     }, c: {
-        Loading:false,
+        Loading: false,
         data: false,
         user: {
             blogs: [],
+            Likes: [],
             Followers: [],
             Following: [],
             name: "",
             id: 0,
             img: "",
-            data:0
+            data: 0
         }
     }
 
@@ -34,22 +35,28 @@ const todoSlice = createSlice({
             state.b.loading = action.payload.loading
             state.b.val = action.payload.val
         },
-        setLoading: (state, action:PayloadAction<Info2>) => {
+        setLoading: (state, action: PayloadAction<Info2>) => {
             state.c.user = action.payload.user
-            state.c.Loading = action.payload.Loading 
+            state.c.Loading = action.payload.Loading
             state.c.data = action.payload.data
         },
-        setVal: (state, action:PayloadAction<boolean>) => {
-state.c.data = action.payload
+        setVal: (state, action: PayloadAction<boolean>) => {
+            state.c.data = action.payload
         },
         setDal: (state, action: PayloadAction<blogs[]>) => {
             state.b.blogs = action.payload
+        },
+        setInc: (state, action: PayloadAction<number>) => {
+            state.c.user.Followers.length += action.payload
+        },
+        setDnc: (state, action: PayloadAction<number>) => {
+            state.c.user.Followers.length -= action.payload
         }
     }
 });
 
 // Export the actions and reducer
-export const { setBlogs, setLoading, setVal,setDal } = todoSlice.actions;
+export const { setBlogs, setLoading, setVal, setDal, setDnc, setInc } = todoSlice.actions;
 export default todoSlice.reducer;
 
 

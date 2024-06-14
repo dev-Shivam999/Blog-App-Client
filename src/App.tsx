@@ -1,5 +1,6 @@
 
 import { Route, Routes } from 'react-router-dom';
+import { memo } from 'react';
 import Sign from './pages/sign';
 import SignUp from './pages/signUp';
 import Profile from './pages/Profile';
@@ -7,8 +8,9 @@ import Blogs from './pages/Blogs';
 import Blog from './pages/Blog';
 import Create from './pages/Create';
 import BloggerProfile from './pages/BloggerProfile';
+import Edits from './pages/Edits';
 
-const App = () => {
+const App = memo(() => {
   return (
     <div>
 
@@ -21,10 +23,11 @@ const App = () => {
         <Route element={<BloggerProfile/>} path='/BloggerProfile/:id'/>
         <Route element={<Create/>} path='/create'/>
         <Route element={<Create/>} path='/pic'/>
+        <Route element={<Edits/>} path='/Edits'/>
       </Routes>
  
     </div>
   );
-};
+});
 
 export default App;

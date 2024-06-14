@@ -1,10 +1,10 @@
 import axios from 'axios';
-import React, { useRef, useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import Setimg from './Setimg';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-const From = () => {
+const From = memo(() => {
     const navigate=useNavigate()
     const send = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -20,7 +20,7 @@ const From = () => {
             formData.append('Title', title.current.value)
             formData.append('content', content.current.value)
 
-           const {data}= await axios.post("http://localhost:3000/user/post", formData, {
+            const { data } = await axios.post(`${import.meta.env.VITE_SOME_KEY}/user/post`, formData, {
                 headers: {
                     "Authorization": Number(localStorage.getItem('token')),
                     "Content-Type": "multipart/form-data"
@@ -95,6 +95,6 @@ return (
         </div>
     </form>
 );
-};
+});
 
 export default From;

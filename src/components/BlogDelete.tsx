@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { MdDelete } from 'react-icons/md';
 import toast from 'react-hot-toast';
+import { memo } from 'react';
 
-const BlogDelete = ({id}:{id:string}) => {
+const BlogDelete = memo(({id}:{id:string}) => {
 
     const send=async(e:string)=>{
-        const { data } = await axios.post('http://localhost:3000/user/BlogDelete',{e},{
+        const { data } = await axios.post(`${import.meta.env.VITE_SOME_KEY}/user/BlogDelete`,{e},{
             headers:{
                 "Authorization":Number(localStorage.getItem('token'))
             }
@@ -24,6 +25,6 @@ const BlogDelete = ({id}:{id:string}) => {
     return (
         <MdDelete onClick={() => send(id)} />
     );
-};
+});
 
 export default BlogDelete;

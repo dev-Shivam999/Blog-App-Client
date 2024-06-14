@@ -12,7 +12,7 @@ const Blogs = () => {
     
     useEffect(() => {
 
-        axios.post(`http://localhost:3000/user/All`, "none", {
+        axios.post(`${import.meta.env.VITE_SOME_KEY}/user/All`, "none", {
             headers: {
                 "authorization": localStorage.getItem('token'),
             }
@@ -29,6 +29,7 @@ const Blogs = () => {
     const { loading, blogs, val } = useSelector((state: InitialState2) => state.b);
 
 
+
     
     return (
         <div className='p-4'>
@@ -43,7 +44,7 @@ const Blogs = () => {
 
             </div>
             {
-                loading ? <div>loading..</div> : blogs && blogs.length > 0 && blogs.map(p => <BlogCard key={p.id} Like={p.Link} authorName={p.authore.name} authorPic={p.authore.img} content={p.content} publishedDate={p.created} id={p.id} title={p.title} avatar={p.avtar} />
+                loading ? <div>loading..</div> : blogs && blogs.length > 0 && blogs.map(p => <BlogCard key={p.id} Like={p?.Likes!} authorName={p.authore.name} authorPic={p.authore.img} content={p.content} publishedDate={p.created} id={p.id} BlogerId={p.authore.id} title={p.title} avatar={p.avtar} />
                 )
             }
         </div>

@@ -17,6 +17,7 @@ interface BlogCard {
     avatar: string,
     img?: string
     type?: string
+    BlogerId:string
     Like: Link[]
 
 }
@@ -25,7 +26,7 @@ interface blogs {
     id: string,
     title: string,
     content: string,
-    Link: Link[]
+    Likes: Link[],
     created: string,
     authoreId: string,
     avtar: string
@@ -42,7 +43,7 @@ interface blog {
     created: string,
     authoreId: string,
     avtar: string
-    Link: Link[],
+    Likes: Link[],
 
 }
 type Link={
@@ -53,6 +54,8 @@ interface user {
     img: string
     data: number
     id: number
+    Likes:Link[]
+    Link?:Link[]
     blogs: blog[],
     Followers: [],
     Following: [],

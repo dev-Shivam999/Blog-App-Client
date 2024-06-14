@@ -1,6 +1,7 @@
+import { memo } from "react";
 
 
-const Quote = () => {
+const Quote = memo(() => {
     return (
         <div className='bg-zinc-200 h-screen px-[5vw] flex flex-col  justify-center '>
             <div className='text-center'>
@@ -12,6 +13,6 @@ const Quote = () => {
         </div>
         </div>
     );
-};
+});
 
 export default Quote;

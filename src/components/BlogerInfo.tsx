@@ -1,6 +1,6 @@
-import  { useState } from 'react';
+import  { memo, useState } from 'react';
 
-const BloggerInfo = () => {
+const BloggerInfo = memo(() => {
     const p = "            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet harum adipisci reiciendis. Autem, ipsa odio minus porro consequatur, est ut inventore tempora illum hic quae, temporibus nobis enim deleniti quasi"
 
     const[data,setData]=useState<number>(100)
@@ -17,6 +17,6 @@ const BloggerInfo = () => {
             }
  </div>
     );
-};
+});
 
 export default BloggerInfo;

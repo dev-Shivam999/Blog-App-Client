@@ -1,32 +1,36 @@
-import  {  useEffect, useState } from 'react';
+import  {  memo, useEffect, useState } from 'react';
 import './linke.css'
 import axios from 'axios';
 import toast from 'react-hot-toast';
-const Like = ({id,count}:{id:string,count:Link[]}) => {
+const Like = memo(({id,count}:{id:string,count:Link[]}) => {
     const [HeartIcon, setHeartIcon] =useState<boolean>(false)
-    const [c,seC] =useState<number>(count.length)
+ const [c,seC] =useState<number>(count?.length)
+
   
     useEffect(()=>{
-       const check= count.filter(c => c.blogerId ==localStorage.getItem('token'))
-       if (check.length>0) {
+       const check= count?.filter(c => c.blogerId ==localStorage.getItem('token'))
+       console.log(check);
+       
+       if (check?.length>0) {
            setHeartIcon(true)
        }
        
     },[])
    
   const Heart=async(id:string)=>{
-      const { data } = await axios.post('http://localhost:3000/user/Link',{id:id},{
+      const { data } = await axios.post(`${import.meta.env.VITE_SOME_KEY}/user/Link`,{id:id},{
         headers:{
             "Authorization":Number(localStorage.getItem('token')),
         }
       })
       if (!data.success&&data.message) {
        seC(c-1)
+    setHeartIcon(p => !p)
        } else if (data.success && data.message){
            
            seC(c+1)
         setHeartIcon(p => !p)
-      }else{
+        }else{
         toast.error("Login")
       }
 }
@@ -82,6 +86,6 @@ const Like = ({id,count}:{id:string,count:Link[]}) => {
             </span>
         </button>
     );
-};
+});
 
 export default Like;

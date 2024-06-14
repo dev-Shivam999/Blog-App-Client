@@ -1,10 +1,11 @@
 
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
-const Full = ({ title, content, authorName, img, avatar, id, publishedDate, }: BlogCard) => {
+const Full = memo(({ title, content, authorName, img, avatar, BlogerId, id, publishedDate, }: BlogCard) => {
     const date = new Date(publishedDate)
     const Month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-
+BlogerId
     return (
 
         <div className='relative min-h-screen w-full ps-3 '>
@@ -23,7 +24,7 @@ const Full = ({ title, content, authorName, img, avatar, id, publishedDate, }: B
                     <div className='col-span-3   p-5 rounded-lg'>
                         <Link to={`/BloggerProfile/${id}`}> Author</Link>
                         <Link to={`/BloggerProfile/${id}`}  className='text-2xl font-bold sm:text-5xl flex gap-2'>
-                            <img src={`http://localhost:3000${img}`} className='w-[10vw] h-[10vw] rounded-full object-cover object-top' alt="" />  <div>  {authorName.length>10?authorName.slice(0,10)+"..":authorName}</div>
+                            <img src={`${import.meta.env.VITE_SOME_KEY}${img}`} className='w-[10vw] h-[10vw] rounded-full object-cover object-top' alt="" />  <div>  {authorName.length>10?authorName.slice(0,10)+"..":authorName}</div>
                         </Link>
                     </div>
                     <div className='col-span-9  p-5 rounded-lg '>
@@ -36,7 +37,7 @@ const Full = ({ title, content, authorName, img, avatar, id, publishedDate, }: B
                             {content}
                         </p>
                         <div>
-                            <img src={`http://localhost:3000${avatar}`} alt="" />
+                            <img src={`${import.meta.env.VITE_SOME_KEY}${avatar}`} alt="" />
                         </div>
                     </div>
                  
@@ -44,6 +45,6 @@ const Full = ({ title, content, authorName, img, avatar, id, publishedDate, }: B
             </div>
       </div>
     );
-};
+});
 
 export default Full;
