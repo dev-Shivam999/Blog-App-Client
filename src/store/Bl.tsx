@@ -10,7 +10,7 @@ const initialState: InitialState2 = {
         loading: true,
         val: false
     }, c: {
-        Loading: false,
+        Loading: true,
         data: false,
         user: {
             blogs: [],
