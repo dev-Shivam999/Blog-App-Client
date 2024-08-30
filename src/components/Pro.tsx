@@ -103,7 +103,7 @@ const Pro = memo(({show}:{show:true|false}) => {
                                 <div className=' mt-3 text-center md:mt-14 sm:mt-6 md:text-center text-3xl font-bold font-math'>{show ? "Your" : "Their"} Blogs</div>
                             </div>
                             {
-                                user?.blogs && user?.blogs && user?.blogs.map(blog => <BlogCard BlogerId={String(user.id)} authorName={user?.name} Like={lo.pathname=="/Profile"?user.Likes:user.Likes}  authorPic={user?.img}  type={String(lo)} avatar={blog.avtar} content={blog.content} publishedDate={blog.created} title={blog.title} id={blog.id} img={blog.avtar} key={blog.id} />)
+                                user?.blogs && user?.blogs && user?.blogs.map(blog => <BlogCard BlogerId={String(user.id)} authorName={user?.name} Like={lo.pathname=="/Profile"?user.Likes:blog.Likes}  authorPic={user?.img}  type={String(lo)} avatar={blog.avtar} content={blog.content} publishedDate={blog.created} title={blog.title} id={blog.id} img={blog.avtar} key={blog.id} />)
                             }
                          
                         </div>
