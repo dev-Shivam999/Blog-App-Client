@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import {  setDnc, setInc, setVal } from '../store/Bl';
 import { useSelector } from 'react-redux';
 import { memo } from 'react';
+import toast from 'react-hot-toast';
 
 const MakeFollow = memo(() => {
     const {data}=useSelector((state:InitialState2)=>state.c)
@@ -28,6 +29,16 @@ const dispatch=useDispatch()
             dispatch(setVal(false))
                dispatch(setDnc(1))
         }
+       } else {
+           toast.error(data.message, {
+               duration: 1000,
+               icon: '❌',
+               style: {
+                   border: '5px solid red',
+                   borderRadius: 10,
+
+               }
+           })
        }
         
     }
