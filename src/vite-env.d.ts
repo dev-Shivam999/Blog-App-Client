@@ -18,7 +18,7 @@ interface BlogCard {
     img?: string
     type?: string
     BlogerId:string
-    Like: Link[]
+    Like: Link[],
 
 }
 

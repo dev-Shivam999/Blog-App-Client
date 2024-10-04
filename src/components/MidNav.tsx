@@ -1,7 +1,6 @@
 import  { memo } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './nav';
-
 const MidNav = memo(({val}:{val:boolean}) => {
    
     
@@ -11,7 +10,9 @@ const MidNav = memo(({val}:{val:boolean}) => {
             <Link to={'/create'} className='bg-zinc-800 text-white px-3 pb-1 flex justify-center items-center py-0 rounded-full'>
                 +
             </Link>
-                <Link to={'/Profile'} className='w-[10vw] sm:w-[5vw] sm:h-[5vw] h-[10vw] rounded-full overflow-hidden '> <img className='w-full h-full object-cover object-top' src={`${import.meta.env.VITE_SOME_KEY}${val}`} alt="" /></Link>
+                <Link to={'/Profile'} className='w-[10vw] sm:w-[5vw] sm:h-[5vw] h-[10vw] rounded-full overflow-hidden bg-slate-700 text-white  '>
+                   Profile
+                 </Link>
         </div> : window.innerWidth > 500 ? <div className='flex gap-3 items-center'>
             {
                 val == null ?<>

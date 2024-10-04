@@ -10,10 +10,13 @@ import { setLoading } from '../store/Bl';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Pro = memo(({show}:{show:true|false}) => {
     const { id } = useParams()
     const lo = useLocation()
+    
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
@@ -62,6 +65,7 @@ const Pro = memo(({show}:{show:true|false}) => {
 
     }, [])
     const { Loading, user } = useSelector((state: InitialState2) => state.c)
+
   
 
 
@@ -78,7 +82,15 @@ const Pro = memo(({show}:{show:true|false}) => {
                 Loading ? <div>loading..</div> :
                     <>
                         <div className='p-3 flex flex-wrap sm:flex-nowrap gap-5'>
-                            <img className='w-[30vw] h-[30vw] rounded-full object-cover object-top' src={`${import.meta.env.VITE_SOME_KEY}${user?.img}`} alt="" />
+                            <LazyLoadImage
+                                alt={user?.img}
+                                effect="blur"
+                                wrapperProps={{
+                                    // If you need to, you can tweak the effect transition using the wrapper style.
+                                    style: { transitionDelay: "1s" },
+                                }}
+                                className='w-[30vw] h-[30vw] rounded-full object-cover object-top'
+                                src={user?.img} />   
                             <div className='w-full'>
                                 <h1 className='font-bold text-xl sm:text-5xl'>
                                     {user?.name}
@@ -103,7 +115,7 @@ const Pro = memo(({show}:{show:true|false}) => {
                                 <div className=' mt-3 text-center md:mt-14 sm:mt-6 md:text-center text-3xl font-bold font-math'>{show ? "Your" : "Their"} Blogs</div>
                             </div>
                             {
-                                user?.blogs && user?.blogs && user?.blogs.map(blog => <BlogCard BlogerId={String(user.id)} authorName={user?.name} Like={lo.pathname=="/Profile"?user.Likes:blog.Likes}  authorPic={user?.img}  type={String(lo)} avatar={blog.avtar} content={blog.content} publishedDate={blog.created} title={blog.title} id={blog.id} img={blog.avtar} key={blog.id} />)
+                                user?.blogs && user?.blogs && user?.blogs.map(blog => <BlogCard BlogerId={String(user.id)} authorName={user?.name} Like={lo.pathname=="/Profile"?user.Likes:blog.Likes}  authorPic={user?.img}  type={String(lo.pathname)} avatar={blog.avtar} content={blog.content} publishedDate={blog.created} title={blog.title} id={blog.id} img={blog.avtar} key={blog.id} />)
                             }
                          
                         </div>

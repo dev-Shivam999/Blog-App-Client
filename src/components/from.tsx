@@ -16,14 +16,27 @@ const From = memo(() => {
                 return toast.error(`content must be less than 500 characters ${ content.current.value.length}`)
             }
             const formData = new FormData()
-            formData.append('file', img.target.files[0])
+            const dat=new FormData()
+
+            dat.append("file", img.target.files[0])
+            dat.append("upload_preset", "zkpqmxbs")
+            dat.append("cloud_name", "dqavwsmjz")
+            const url = await fetch("  https://api.cloudinary.com/v1_1/dqavwsmjz/image/upload", {
+                method: "post",
+                body: dat
+            })
+            const data2 = await url.json()
+            
+
+            formData.append('avtar', data2.secure_url)
+
             formData.append('Title', title.current.value)
             formData.append('content', content.current.value)
 
-            const { data } = await axios.post(`${import.meta.env.VITE_SOME_KEY}/user/post`, formData, {
+            const { data } = await axios.post(`${import.meta.env.VITE_SOME_KEY}/user/post`,formData, {
                 headers: {
                     "Authorization": Number(localStorage.getItem('token')),
-                    "Content-Type": "multipart/form-data"
+                    "Content-Type": "application/json"
                 }
             })
             if (data.success) {

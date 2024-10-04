@@ -29,14 +29,14 @@ const Auth = memo(({ type }: { type: "sign in" | "sign up"|"edits" }) => {
                 const img = res.data.message.img
                 const Name = res.data.message.name
                 setPostInput({ ...postInput, img: img, name:Name})
-                setfor(`${import.meta.env.VITE_SOME_KEY}${img}`)
+                setfor(img)
             }
         ).catch(err => console.log(err))
     }
 
     useEffect(() => {
 
-        edits()
+      type=="edits"&&edits()
     }, [])
 
     const [or, setfor] = useState<string>()
@@ -46,38 +46,46 @@ const Auth = memo(({ type }: { type: "sign in" | "sign up"|"edits" }) => {
     async function sendRequest(e: React.FormEvent<HTMLFormElement>) {
         try {
             e.preventDefault()
-            let formData
+            let formData: { avtar: String, email: String, name: String, password: String } = { avtar: "String", email: "String", name: "String", password: "String" }
             if (type == "sign in"||type == "edits") {
-                formData = new FormData()
+            
                 if (!img?.target.files&&type != "edits") {
                     return alert("Please select img")
                 }
                 
                     if (img?.target.files) {
+                        const data=new FormData()
+                        data.append("file", img.target.files[0])
+                        data.append("upload_preset", "zkpqmxbs")
+                        data.append("cloud_name", "dqavwsmjz")
+                        const url = await fetch("  https://api.cloudinary.com/v1_1/dqavwsmjz/image/upload", {
+                            method: "post",
+                            body: data
+                        })
+                        const data2 = await url.json()
+                   
                        
-                        formData.append('file', img.target.files[0])
+                        formData.avtar= data2.secure_url
                     }
                 
                 if (postInput.name) {
-                    formData.append('name', postInput.name)
+                    formData.name= postInput.name
                 }
                 if (postInput.email) {
-                    formData.append('email', postInput.email)
+                    formData.email= postInput.email
                 }
                 if (postInput.password) {
-                    formData.append('password', postInput.password)
+                    formData.password= postInput.password
                 }
             }
 
 
             let data
             if (type == "sign in"||type == "edits") {
-                data = await axios.post(`${import.meta.env.VITE_SOME_KEY}/user/${type == "sign in" ?"signup":"EditsProfile"}`, formData, {
-                    headers: {
-                        'Content-Type': type=="sign in"? 'multipart/form-data':undefined,
-                        "Authorization" :Number(localStorage.getItem('token'))
-                    }
-                })
+                data = await axios.post(`${import.meta.env.VITE_SOME_KEY}/user/${type == "sign in" ? "signup" : "EditsProfile"}`, formData, {headers: {
+                    "Authorization": Number(localStorage.getItem('token')),
+                    "Location": String(lo.pathname)
+                }})
             }
             else{
                 data = await axios.post(`${import.meta.env.VITE_SOME_KEY}/user/sign`, postInput)

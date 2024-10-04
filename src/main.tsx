@@ -9,12 +9,12 @@ import { store } from './store/store.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 
-    <Provider store={store}> 
-    <BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
 
-    <App />
-    <Toaster/>
-    </BrowserRouter>
+            <App />
+            <Toaster />
+        </BrowserRouter>
     </Provider>,
 
 

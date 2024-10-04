@@ -9,7 +9,8 @@ const Like = memo(({id,count}:{id:string,count:Link[]}) => {
   
     useEffect(()=>{
        const check= count?.filter(c => c.blogerId ==localStorage.getItem('token'))
-       console.log(check);
+    console.log(check);
+    
        
        if (check?.length>0) {
            setHeartIcon(true)
