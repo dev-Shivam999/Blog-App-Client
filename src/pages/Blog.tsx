@@ -10,7 +10,8 @@ const Blog = memo(() => {
     const {loading,blogs}=useBlog({id:id||""})
     
     return (
-        <div>
+        <div className=' '>
+            
             {
                 loading?<div>loading..</div>:blogs&&<>
                     <Full Like={blogs.Likes} BlogerId={blogs.authore.id} title={blogs.title} id={blogs.authore.id} publishedDate={blogs.created} img={blogs.authore.img} content={blogs.content} authorName={blogs.authore.name} authorPic={blogs.avtar} avatar={blogs.avtar}/>

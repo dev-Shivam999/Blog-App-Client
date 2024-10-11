@@ -66,7 +66,8 @@ interface InitialState2 {
     b: {
         blogs: blogs[],
         loading: boolean,
-        val: boolean,
+        val: string,
+        su:boolean
     }
     c: Info2
 
@@ -75,7 +76,8 @@ interface InitialState {
 
     blogs: blogs[],
     loading: boolean,
-    val: boolean,
+    val: string,
+    su:boolean
 
 }
 

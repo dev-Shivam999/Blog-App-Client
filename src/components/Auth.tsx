@@ -46,7 +46,7 @@ const Auth = memo(({ type }: { type: "sign in" | "sign up"|"edits" }) => {
     async function sendRequest(e: React.FormEvent<HTMLFormElement>) {
         try {
             e.preventDefault()
-            let formData: { avtar: String, email: String, name: String, password: String } = { avtar: "String", email: "String", name: "String", password: "String" }
+            let formData: { avtar: String, email: String, name: String, password: String } = { avtar: "lol", email: "String", name: "String", password: "String" }
             if (type == "sign in"||type == "edits") {
             
                 if (!img?.target.files&&type != "edits") {
@@ -79,10 +79,12 @@ const Auth = memo(({ type }: { type: "sign in" | "sign up"|"edits" }) => {
                 }
             }
 
+            if(formData.avtar=="lol") formData.avtar=postInput.img
+           
 
             let data
             if (type == "sign in"||type == "edits") {
-                data = await axios.post(`${import.meta.env.VITE_SOME_KEY}/user/${type == "sign in" ? "signup" : "EditsProfile"}`, formData, {headers: {
+                data = await axios.post(`${import.meta.env.VITE_SOME_KEY}/user/${type == "sign in" ? "signup" : "EditsProfile"}`,  formData, {headers: {
                     "Authorization": Number(localStorage.getItem('token')),
                     "Location": String(lo.pathname)
                 }})
@@ -94,7 +96,7 @@ const Auth = memo(({ type }: { type: "sign in" | "sign up"|"edits" }) => {
           if (type!="edits") {
               if (data?.data.success) {
                   localStorage.setItem("token", data.data.message)
-                  navigate('/')
+                  navigate('/Blogs')
               } else {
                   toast.error(data?.data.message, {
                       style: {
@@ -147,7 +149,7 @@ const Auth = memo(({ type }: { type: "sign in" | "sign up"|"edits" }) => {
         <div className='h-screen w-[100%] text-sm  flex justify-center flex-col'>
             <div className='text-center font-bold text-xl sm:text-3xl'>
                 {type == "sign in" && "Create an account"}
-                <div className='text-gray-400 text-sm'>
+                <div className=' text-sm'>
                  {
                         type != "edits" && <> Do you have an account <Link to={type == "sign in" ? '/sign' : "/signUp"}>{type != "sign in" ? 'Sign' : "Login"}</Link>?
                         </>
@@ -157,7 +159,7 @@ const Auth = memo(({ type }: { type: "sign in" | "sign up"|"edits" }) => {
             </div>
             <form onSubmit={sendRequest} className=''>
                 {type != "sign up" && <>
-                    <Setimg fo={or ? or : ""} im={im} />
+                    <Setimg cl=" w-[60vw] sm:w-[28vw] rounded-full " fo={or ? or : ""} im={im} />
                     <div className='mx-auto w-3/4 sm:w-1/2'>
                         Chose your pic
                     </div>

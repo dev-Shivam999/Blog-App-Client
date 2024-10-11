@@ -1,7 +1,7 @@
 
 import { memo } from 'react';
 import From from '../components/from';
-import { Link } from 'react-router-dom';
+import Nav2 from '../components/Nav2';
 
 const Create = memo(() => {
 
@@ -9,12 +9,10 @@ const Create = memo(() => {
     
     return (
 
-        <div>
-            <Link to={'/'} className='text-3xl font-bold flex justify-between items-center '>
+        <div className='h-screen overflow-hidden' style={{ backgroundImage: `url(/three.avif)`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", opacity: "0.8", backgroundBlendMode: "color-burn" }}>
+            <div className='px-3 grid grid-cols-2 text-3xl font-bold'>  <Nav2 /></div>
 
-                CRO.BLOGS
-            </Link>
-            <div className='flex justify-center'>
+            <div className='flex justify-center '>
                 <From />
             </div>
         </div>

@@ -1,14 +1,13 @@
-import { Link } from "react-router-dom";
+
 import Auth from "../components/Auth";
+import Nav2 from "../components/Nav2";
 
 
 const Edits = () => {
     return (
         <div>
-            <Link to={'/'} className='text-3xl font-bold flex justify-between items-center '>
+            <div className='p-3 grid grid-cols-2 text-3xl font-bold'>  <Nav2 /></div>
 
-                CRO.BLOGS
-            </Link>
 
             <Auth type="edits" />
         </div>

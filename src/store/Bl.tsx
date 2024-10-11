@@ -8,7 +8,8 @@ const initialState: InitialState2 = {
     b: {
         blogs: [],
         loading: true,
-        val: false
+        val: "",
+        su: false,
     }, c: {
         Loading: true,
         data: false,
@@ -34,6 +35,7 @@ const todoSlice = createSlice({
             state.b.blogs = action.payload.blogs
             state.b.loading = action.payload.loading
             state.b.val = action.payload.val
+            state.b.su=action.payload.su
         },
         setLoading: (state, action: PayloadAction<Info2>) => {
             state.c.user = action.payload.user

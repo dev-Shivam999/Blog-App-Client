@@ -9,14 +9,18 @@ import Blog from './pages/Blog';
 import Create from './pages/Create';
 import BloggerProfile from './pages/BloggerProfile';
 import Edits from './pages/Edits';
+import Home from './pages/Home';
+import Move from './components/Move';
 
 const App = memo(() => {
   return (
-    <div>
+    <div className='bg-black min-h-screen text-white'>
+      <Move/>
 
       <Routes>
         <Route element={<Sign/>} path='/sign'/>
-        <Route element={<Blogs/>} path='/'/>
+        <Route element={<Home/>} path='/'/>
+        <Route element={<Blogs/>} path='/Blogs'/>
         <Route element={<SignUp/>} path='/signUp'/>
         <Route element={<Profile/>} path='/Profile'/>
         <Route element={<Blog/>} path='/Blog/:id'/>

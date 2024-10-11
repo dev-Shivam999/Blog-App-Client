@@ -23,7 +23,7 @@ const BlogDelete = memo(({id}:{id:string}) => {
         
     }
     return (
-        <MdDelete onClick={() => send(id)} />
+        <MdDelete  onClick={() => send(id)} />
     );
 });
 

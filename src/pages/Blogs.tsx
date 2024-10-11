@@ -6,6 +6,7 @@ import { setBlogs } from '../store/Bl';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import FirstCard from '../components/FirstCard';
 
 const Blogs = () => {
       const dispatch = useDispatch();
@@ -20,32 +21,46 @@ const Blogs = () => {
             (res) => {
 
 
-                dispatch(setBlogs({ blogs: res.data.blogs, loading: false, val: res.data.vali }))
+                dispatch(setBlogs({ blogs: res.data.blogs, loading: false, val: res.data.vali,su:res.data.success }))
 
             }
-        ).catch(err => console.log(err))
+        ).catch(
+            err => {
+                dispatch(setBlogs({ blogs: [], loading: false, val: "",su:false }))
+                console.log(err)
+            }
+    )
 
     }, [])
-    const { loading, blogs, val } = useSelector((state: InitialState2) => state.b);
+    const { loading, blogs, val,su } = useSelector((state: InitialState2) => state.b);
 
 
 
     
     return (
         <div className='p-4'>
-            <div className='text-3xl font-bold flex justify-between sm:items-center '>
-                <div>
-                    CRO.BLOGS
-                </div>
-                {
-                    
-                  <MidNav val={val}/>
-                }
+            <div className='text-3xl font-bold flex justify-between items-center '>
+             
+           
+                        <MidNav val2={su} val={val} />
+               
 
             </div>
             {
-                loading ? <div>loading..</div> : blogs && blogs.length > 0 && blogs.map(p => <BlogCard key={p.id} Like={p?.Likes!} authorName={p.authore.name} authorPic={p.authore.img} content={p.content} publishedDate={p.created} id={p.id} BlogerId={p.authore.id} title={p.title} avatar={p.avtar} />
-                )
+                loading ? <div>loading..</div> : blogs && blogs.length > 0 ? <>
+                    
+                    <FirstCard Like={blogs[0]?.Likes!} authorName={blogs[0].authore.name} authorPic={blogs[0].authore.img} content={blogs[0].content} publishedDate={blogs[0].created} id={blogs[0].id} BlogerId={blogs[0].authore.id} title={blogs[0].title} avatar={blogs[0].avtar} />
+                 <div className='grid gap-2 grid-cols-1 sm:grid-cols-2'>
+                        {
+                            blogs.map((p, i) => i !== 0 && <BlogCard key={p.id} Like={p?.Likes!} authorName={p.authore.name} authorPic={p.authore.img} content={p.content} publishedDate={p.created} id={p.id} BlogerId={p.authore.id} title={p.title} avatar={p.avtar} />
+                            )
+                        }
+                 </div>
+                    
+                </>:<div>
+                        {!su ?"server off try again":"Add BLogs"}
+                    
+                </div>
             }
         </div>
 
