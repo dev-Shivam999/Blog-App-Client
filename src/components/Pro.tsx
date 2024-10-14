@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 import Img from './Img';
 import Nav2 from './Nav2';
+import { BookLoaderComponent } from './Loading';
 
 const Pro = memo(({show}:{show:true|false}) => {
     const { id } = useParams()
@@ -79,7 +80,7 @@ const Pro = memo(({show}:{show:true|false}) => {
                 <Nav2/>
             </div>
             {
-                Loading ? <div>loading..</div> :
+                Loading ? <BookLoaderComponent/> :
                     <>
                         <div className='p-3  '>
                             

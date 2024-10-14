@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import FirstCard from '../components/FirstCard';
+import { BookLoaderComponent } from '../components/Loading';
 
 const Blogs = () => {
       const dispatch = useDispatch();
@@ -47,7 +48,7 @@ const Blogs = () => {
 
             </div>
             {
-                loading ? <div>loading..</div> : blogs && blogs.length > 0 ? <>
+                loading ? <BookLoaderComponent/> : blogs && blogs.length > 0 ? <>
                     <h1 className="font-bold text-3xl">OUR POPULAR  BLOG</h1>
 
                     <FirstCard Like={blogs[0]?.Likes!} authorName={blogs[0].authore.name} authorPic={blogs[0].authore.img} content={blogs[0].content} publishedDate={blogs[0].created} id={blogs[0].id} BlogerId={blogs[0].authore.id} title={blogs[0].title} avatar={blogs[0].avtar} />

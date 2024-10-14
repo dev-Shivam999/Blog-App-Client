@@ -1,3 +1,4 @@
+
 import Up from '../components/Up';
 import  '../index.css'
 const Home = () => {

@@ -3,72 +3,79 @@
 @tailwind utilities;
 
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   background: #000;
 }
-body::-webkit-scrollbar-thumb{
+
+body::-webkit-scrollbar-thumb {
   background-color: rgb(62, 61, 61);
   border-radius: 50px;
-  
+
 }
 
 
 .tt {
-    background-image: url("/one.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-y: -19vw;
-  }
-  .glass::-webkit-scrollbar{
-    display: none;
-  }
-  .sr::-webkit-scrollbar{
-display: none;
-  }
-  .pls::placeholder{
-color: black;
-  }
-  body{
-    cursor: none;
-  }
-.glass{
-    background: rgb(255, 255, 255,0.43);
-    border-radius: 16px;
-
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgb(255, 255, 255,1);
+  background-image: url("/one.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: -19vw;
 }
+
+.glass::-webkit-scrollbar {
+  display: none;
+}
+
+.sr::-webkit-scrollbar {
+  display: none;
+}
+
+.pls::placeholder {
+  color: black;
+}
+
+body {
+  cursor: none;
+}
+
+.glass {
+  background: rgb(255, 255, 255, 0.43);
+  border-radius: 16px;
+
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgb(255, 255, 255, 1);
+}
+
 .light-cart {
-    top: 100%;
-    transition: 2s;
-    background-color: rgba(245, 245, 245, 0.455);
+  top: 100%;
+  transition: 2s;
+  background-color: rgba(245, 245, 245, 0.455);
 }
 
 .Cart:hover .light-cart {
-    transition: 2s;
-    top: 0;
+  transition: 2s;
+  top: 0;
 }
 
 .fot:hover .t {
-    display: block;
+  display: block;
 }
 
 .w {
-    width: 0px;
-    border: 0;
+  width: 0px;
+  border: 0;
 
-    white-space: nowrap;
-    overflow: hidden;
-    background-color: rgb(30, 28, 28);
-    color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: rgb(30, 28, 28);
+  color: white;
 }
 
 .ho:hover .w {
-    padding-inline: 6px;
-    width: 95%;
-    height: 90%;
-    transition: 2s;
-    transform-origin: left;
+  padding-inline: 6px;
+  width: 95%;
+  height: 90%;
+  transition: 2s;
+  transform-origin: left;
 }

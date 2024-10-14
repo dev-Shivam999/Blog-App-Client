@@ -14,7 +14,7 @@ import Move from './components/Move';
 
 const App = memo(() => {
   return (
-    <div className='bg-black min-h-screen text-white'>
+    <div className='bg-black  min-h-screen text-white'>
       <Move/>
 
       <Routes>
