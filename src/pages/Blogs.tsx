@@ -48,7 +48,8 @@ const Blogs = () => {
             </div>
             {
                 loading ? <div>loading..</div> : blogs && blogs.length > 0 ? <>
-                    
+                    <h1 className="font-bold text-3xl">OUR POPULAR  BLOG</h1>
+
                     <FirstCard Like={blogs[0]?.Likes!} authorName={blogs[0].authore.name} authorPic={blogs[0].authore.img} content={blogs[0].content} publishedDate={blogs[0].created} id={blogs[0].id} BlogerId={blogs[0].authore.id} title={blogs[0].title} avatar={blogs[0].avtar} />
                  <div className='grid gap-2 grid-cols-1 sm:grid-cols-2'>
                         {

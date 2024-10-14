@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 
+body::-webkit-scrollbar{
+  background: #000;
+}
+body::-webkit-scrollbar-thumb{
+  background-color: rgb(62, 61, 61);
+  border-radius: 50px;
+  
+}
+
 
 .tt {
     background-image: url("/one.jpg");

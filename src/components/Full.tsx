@@ -18,7 +18,7 @@ const Full = memo(({ title, content, authorName, img, avatar, BlogerId, id, publ
 
             </div>
             <div className='mix-blend-hard-light h-full ' >
-                <div className='p-3 grid grid-cols-2 text-3xl font-bold'>  <Nav2 /></div>
+                <div className='p-3 grid grid-cols-2 font-bold'>  <Nav2 /></div>
                 <div className='col-span-3 flex gap-3   rounded-lg'>
                     <Link to={`/BloggerProfile/${id}`}> Author</Link>
                     <Link to={`/BloggerProfile/${id}`} className='text-2xl font-bold sm:text-5xl flex gap-2'>
@@ -26,7 +26,7 @@ const Full = memo(({ title, content, authorName, img, avatar, BlogerId, id, publ
                         <div>  {authorName.length > 10 ? authorName.slice(0, 10) + ".." : authorName}</div>
                     </Link>
                 </div>
-                <div className='flex h-[80vh] md:h-[75vh] relative  overflow-scroll w-3/4 mx-auto 
+                <div className='flex h-[80vh] md:h-[75vh] relative  overflow-scroll  w-11/12 sm:w-3/4 mx-auto 
                 justify-center  text-black glass ' key={img}>
                   
 
@@ -36,8 +36,8 @@ const Full = memo(({ title, content, authorName, img, avatar, BlogerId, id, publ
                         </h1><h2>
                             Posted on <Dat publishedDate={publishedDate} />
                         </h2>
-                        <div>
-                            <Img className='rounded-lg w-full h-full lg:w-1/2 mx-auto' val={avatar} />
+                        <div className='h-[30vh] sm:h-[50vh]'>
+                            <Img className='rounded-lg w-full h-full lg:w-3/4 mx-auto' val={avatar} />
                         </div>
                         <p className=' sm:text-lg text-xs text-zinc-950 font-mono'>
                             {content}

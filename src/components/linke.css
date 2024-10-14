@@ -12,13 +12,13 @@
   transition-timing-function: cubic-bezier(0.64, 0.57, 0.67, 1.53);
   transition-duration: 0.1s;
   svg {
-    stroke: red;
+    stroke: rgb(253, 27, 27);
     &.full {
       fill: none;
-      stroke: red;
+      stroke: rgb(253, 27, 27);;
     }
     &.heartfiller {
-      fill: red;
+      fill: rgb(253, 27, 27);;
       position:absolute;
       transform: scale(0, 0);
       left:0;
@@ -26,7 +26,7 @@
       display:none;
     }
     &.left {
-      fill: red;
+      fill: rgb(253, 27, 27);;
       position: absolute;
       display:none;
       top:0;

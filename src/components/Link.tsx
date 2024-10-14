@@ -78,7 +78,7 @@ const Like = memo(({id,count}:{id:string,count:Link[]}) => {
                 />
             </svg>
            
-            <span className='text-3xl font-serif text-gray-600'>
+            <span className='text-3xl font-serif text-white'>
 
                 {
                     c > 0 && c > 1000 ? c.toString().slice(0, 1)[0] + "." + c.toString().slice(0, 1)[1] + "k" : c > 100000 ? c.toString().slice(0, 2)[0] + "." + c.toString().slice(1, 2) + "M" : c>=1&&c

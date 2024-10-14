@@ -9,10 +9,9 @@ import Thug from './Link';
 const FirstCard = ({ authorName, BlogerId, type, authorPic, content, publishedDate, title, avatar, id, Like }: BlogCard) => {
     return (
         <div  className="flex flex-wrap-reverse justify-between gap-3 sm:flex-nowrap">
-            <div className="w-full sm:w-[70%]" >
+            <div className="w-full sm:w-[60%]" >
                 <Link to={`/blog/${id}`} className="  ">
-                    <h1 className="font-bold text-3xl">OUR POPULAR  BLOG</h1>
-                    <Img val={avatar} className="rounded-lg h-[40vh] object-center object-cover w-full    " />
+                     <Img val={avatar} className="rounded-lg h-[50vh]  w-full    " />
                     <div className="my-2">
                         <Dat publishedDate={publishedDate} /> <span className="ms-2 uppercase">{authorName}</span>
                     </div>
