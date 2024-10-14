@@ -37,7 +37,7 @@ const Like = memo(({id,count}:{id:string,count:Link[]}) => {
 }
     return (
         <button id="HeartIcon" className={`heart flex gap-4 items-center ${HeartIcon ? "filled" :"notFilled"}`} onClick={()=> Heart(id)}>
-            <svg width="32px" height="27px" viewBox="0 0 31 27" version="1.1" xmlns="http://www.w3.org/2000/svg" className="full">
+            <div className='flex '>  <svg width="32px" height="27px" viewBox="0 0 31 27" version="1.1" xmlns="http://www.w3.org/2000/svg" className="full">
                 <g id="Page-1">
                     <g id="Artboard-Copy" transform="translate(-8.000000, -12.000000)">
                         <path d="M36.8,14.8 C35.4,13.3 33.4,12.5 31.4,12.5 C29.4,12.5 27.4,13.3 26,14.8 L24,16.9 L22,14.8 C20.6,13.3 18.6,12.5 16.6,12.5 C14.6,12.5 12.6,13.3 11.2,14.8 C8.2,17.9 8.2,22.9 11.2,26 L23.2,38.7 C23.4,38.9 23.7,39 23.9,39 C23.9,39 23.9,39 24,39 C24,39 24,39 24.1,39 C24.4,39 24.6,38.9 24.8,38.7 L34.1,28.8 L36.8,26 C39.7,22.9 39.7,17.9 36.8,14.8 Z"></path>
@@ -45,13 +45,13 @@ const Like = memo(({id,count}:{id:string,count:Link[]}) => {
                 </g>
             </svg>
 
-            <svg width="32px" height="27px" viewBox="0 0 31 27" version="1.1" xmlns="http://www.w3.org/2000/svg" className="heartfiller">
-                <g id="Page-1">
-                    <g id="Artboard-Copy" transform="translate(-8.000000, -12.000000)">
-                        <path d="M36.8,14.8 C35.4,13.3 33.4,12.5 31.4,12.5 C29.4,12.5 27.4,13.3 26,14.8 L24,16.9 L22,14.8 C20.6,13.3 18.6,12.5 16.6,12.5 C14.6,12.5 12.6,13.3 11.2,14.8 C8.2,17.9 8.2,22.9 11.2,26 L23.2,38.7 C23.4,38.9 23.7,39 23.9,39 C23.9,39 23.9,39 24,39 C24,39 24,39 24.1,39 C24.4,39 24.6,38.9 24.8,38.7 L34.1,28.8 L36.8,26 C39.7,22.9 39.7,17.9 36.8,14.8 Z"></path>
+                <svg width="32px" height="27px" viewBox="0 0 31 27" version="1.1" xmlns="http://www.w3.org/2000/svg" className="heartfiller">
+                    <g id="Page-1">
+                        <g id="Artboard-Copy" transform="translate(-8.000000, -12.000000)">
+                            <path d="M36.8,14.8 C35.4,13.3 33.4,12.5 31.4,12.5 C29.4,12.5 27.4,13.3 26,14.8 L24,16.9 L22,14.8 C20.6,13.3 18.6,12.5 16.6,12.5 C14.6,12.5 12.6,13.3 11.2,14.8 C8.2,17.9 8.2,22.9 11.2,26 L23.2,38.7 C23.4,38.9 23.7,39 23.9,39 C23.9,39 23.9,39 24,39 C24,39 24,39 24.1,39 C24.4,39 24.6,38.9 24.8,38.7 L34.1,28.8 L36.8,26 C39.7,22.9 39.7,17.9 36.8,14.8 Z"></path>
+                        </g>
                     </g>
-                </g>
-            </svg>
+                </svg></div>
            
             <svg width="19px" height="27px" viewBox="0 0 19 27" version="1.1" xmlns="http://www.w3.org/2000/svg" className="left">
                 <g id="Page-1">
