@@ -123,7 +123,7 @@ const Pro = memo(({show}:{show:true|false}) => {
                             <div className='grid grid-cols-1 sm:grid-cols-2 '>
 
                             {
-                                user?.blogs && user?.blogs && user?.blogs.map(blog => <BlogCard BlogerId={String(user.id)} authorName={user?.name} Like={lo.pathname=="/Profile"?user.Likes:blog.Likes}  authorPic={user?.img}  type={String(lo.pathname)} avatar={blog.avtar} content={blog.content} publishedDate={blog.created} title={blog.title} id={blog.id} img={blog.avtar} key={blog.id} />)
+                                user?.blogs && user?.blogs && user?.blogs.map(blog => <BlogCard BlogerId={String(user.id)} authorName={user?.name} Like={blog.Likes}  authorPic={user?.img}  type={String(lo.pathname)} avatar={blog.avtar} content={blog.content} publishedDate={blog.created} title={blog.title} id={blog.id} img={blog.avtar} key={blog.id} />)
                             }
                             </div>
                          
