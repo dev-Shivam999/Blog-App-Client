@@ -11,7 +11,7 @@ const FirstCard = ({ authorName, BlogerId, type, authorPic, content, publishedDa
         <div  className="flex flex-wrap-reverse justify-between gap-3 sm:flex-nowrap">
             <div className="w-full sm:w-[60%]" >
                 <Link to={`/blog/${id}`} className="  ">
-                     <Img val={avatar} className="rounded-lg h-[50vh]  w-full    " />
+                     <Img val={avatar} className="rounded-lg h-[50vw] sm:h-[50vh]  w-full    " />
                     <div className="my-2">
                         <Dat publishedDate={publishedDate} /> <span className="ms-2 uppercase">{authorName}</span>
                     </div>

@@ -40,7 +40,7 @@ const Blogs = () => {
     
     return (
         <div className='p-4'>
-            <div className='text-3xl font-bold flex justify-between items-center '>
+            <div className=' '>
              
            
                         <MidNav val2={su} val={val} />

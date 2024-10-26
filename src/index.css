@@ -18,7 +18,6 @@ body::-webkit-scrollbar-thumb {
   background-image: url("/one.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position-y: -19vw;
 }
 
 .glass::-webkit-scrollbar {

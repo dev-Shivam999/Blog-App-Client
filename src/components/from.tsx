@@ -114,14 +114,14 @@ const content = useRef<HTMLTextAreaElement | null>(null)
         }
     }
 return (
-    <form className='w-2/3 glass p-5  ' onSubmit={send}>
+    <form className='sm:w-2/3 w-11/12 glass sm:p-5  ' onSubmit={send}>
            
             <Setimg fo={or ? or : ""} im={im} />
         
         <div className='w-full  mx-auto'>
             <input type="text" placeholder='Enter the your blog title' ref={title ? title : ""} className='outline-none m-2 w-full rounded-md p-3 text-xl pls  bg-transparent font-bold font-mono' />
             <textarea name="" id="" cols={30} rows={10} ref={content ? content : ""} className='outline-none sr mx-2 rounded-md w-full p-3  bg-transparent pls ' spellCheck={false} placeholder='Enter the your blog story'></textarea>
-            <button className={`w-full transition-all ${push?"bg-yellow-300":"bg-green-500"} mx-2 rounded-md p-2 text-3xl text-white`}>{push?"Uploading":"Publish"}</button>
+            <button className={`w-11/12 mx-auto block my-4 transition-all ${push?"bg-yellow-300":"bg-green-500"}  rounded-md p-2 text-3xl text-white`}>{push?"Uploading":"Publish"}</button>
         </div>
     </form>
 );

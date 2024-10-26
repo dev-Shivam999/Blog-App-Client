@@ -1,5 +1,5 @@
-import  { memo, useEffect } from 'react';
-import {  useLocation, useNavigate, useParams } from 'react-router-dom';
+import { memo, useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Follow from './Follow';
 import BloggerInfo from './BlogerInfo';
 import EditsProfile from './EditsProfile';
@@ -13,11 +13,12 @@ import toast from 'react-hot-toast';
 import Img from './Img';
 import Nav2 from './Nav2';
 import { BookLoaderComponent } from './Loading';
+import { FaEquals, FaX } from 'react-icons/fa6';
 
-const Pro = memo(({show}:{show:true|false}) => {
+const Pro = memo(({ show }: { show: true | false }) => {
     const { id } = useParams()
     const lo = useLocation()
-    
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
@@ -30,34 +31,34 @@ const Pro = memo(({show}:{show:true|false}) => {
             }
         }).then(
             res => {
-               if (res.data.success) {
-                   if (res.data.message == true) {
-                       navigate('/Profile')
-                   }
-                   
-                   
-                   dispatch(setLoading({ user: res.data.message.user, data: res.data.message.data, Loading: false }))
+                if (res.data.success) {
+                    if (res.data.message == true) {
+                        navigate('/Profile')
+                    }
 
-               }else{
-                   if (res.data.message =='Not found') {
-                       toast.error(res.data.message, {
-                           style: {
-                               border: '5px solid red',
-                               borderRadius: 5
-                           }
-                       })
-                       navigate('/Blogs')
+
+                    dispatch(setLoading({ user: res.data.message.user, data: res.data.message.data, Loading: false }))
+
+                } else {
+                    if (res.data.message == 'Not found') {
+                        toast.error(res.data.message, {
+                            style: {
+                                border: '5px solid red',
+                                borderRadius: 5
+                            }
+                        })
+                        navigate('/Blogs')
+                    }
+                    else {
+                        toast.error(res.data.message, {
+                            style: {
+                                border: '5px solid red',
+                                borderRadius: 5
+                            }
+                        })
+                        navigate('/signup')
+                    }
                 }
-               else{
-                       toast.error(res.data.message, {
-                           style: {
-                               border: '5px solid red',
-                               borderRadius: 5
-                           }
-                       })
-                       navigate('/signup')
-               }
-               }
 
 
 
@@ -65,25 +66,57 @@ const Pro = memo(({show}:{show:true|false}) => {
         ).catch(err => console.log(err))
 
     }, [])
+
+    const [show2, setShow] = useState<boolean>(true)
     const { Loading, user } = useSelector((state: InitialState2) => state.c)
 
-  
 
 
 
 
-  
+
+
     return (
         <div className='p-4'>
-            <div className='text-3xl font-bold grid  px-3  grid-cols-2 '>
 
-                <Nav2/>
+            <div className='flex justify-between items-center'>
+                <Nav2 />
+                <div className='justify-end'>
+
+                    {
+                        window.innerWidth > 550 ? <Link to={'/Blogs'}><h1 className='text-[4vw] sm:text-[2vw]  font-semibold text-end' >BLOGS</h1></Link>
+                            :
+                            show2 ?
+                                <FaEquals className='text-[8vw]  sm:text-[4vw]' onClick={() => setShow(false)} />
+                                :
+                                <FaX className='text-[8vw]  sm:text-[4vw]' onClick={() => setShow(true)} />
+
+                    }
+
+                </div>
             </div>
+                    <  >
+                        {
+                            !show2 &&
+                            <ul className=''>
+
+                                <li>
+                                    <Link to={'/Blogs'}><h1 className='text-[4vw] sm:text-[2vw]  my-3 font-semibold text-end' >BLOGS</h1></Link>
+
+                                </li>
+
+
+
+                            </ul>
+
+                        }
+                    </>
+
             {
-                Loading ? <BookLoaderComponent/> :
+                Loading ? <BookLoaderComponent /> :
                     <>
                         <div className='p-3  '>
-                            
+
                             <div className='relative flex justify-between ps-10 items-center gap-6'>
                                 <div className='absolute bg-pink-300 h-3/4 w-full top-0 left-0  rounded-lg'>
 
@@ -92,11 +125,11 @@ const Pro = memo(({show}:{show:true|false}) => {
                                     {user?.name}
                                 </h1>
                                 <Img className='w-[30vw]     h-[30vw] rounded-lg object-cover object-top' val={user?.img} />
-                               </div>
-                      
-                            
+                            </div>
+
+
                             <div className='my-5 w-full'>
-                                
+
                                 <div className='md:w-1/2 '>
                                     <div className='flex'>
                                         <Follow f='Follower' c={user?.Followers.length!} />
@@ -105,14 +138,14 @@ const Pro = memo(({show}:{show:true|false}) => {
                                     <BloggerInfo />
                                 </div>
 
-                              {
-                                    show ? <EditsProfile />:<Fm />
-                              }
-                               
+                                {
+                                    show ? <EditsProfile /> : <Fm />
+                                }
+
 
                             </div>
 
-                            
+
 
                         </div>
 
@@ -123,11 +156,11 @@ const Pro = memo(({show}:{show:true|false}) => {
                             </div>
                             <div className='grid grid-cols-1 sm:grid-cols-2 '>
 
-                            {
-                                user?.blogs && user?.blogs && user?.blogs.map(blog => <BlogCard BlogerId={String(user.id)} authorName={user?.name} Like={blog.Likes}  authorPic={user?.img}  type={String(lo.pathname)} avatar={blog.avtar} content={blog.content} publishedDate={blog.created} title={blog.title} id={blog.id} img={blog.avtar} key={blog.id} />)
-                            }
+                                {
+                                    user?.blogs && user?.blogs && user?.blogs.map(blog => <BlogCard BlogerId={String(user.id)} authorName={user?.name} Like={blog.Likes} authorPic={user?.img} type={String(lo.pathname)} avatar={blog.avtar} content={blog.content} publishedDate={blog.created} title={blog.title} id={blog.id} img={blog.avtar} key={blog.id} />)
+                                }
                             </div>
-                         
+
                         </div>
                     </>
             }
