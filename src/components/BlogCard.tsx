@@ -33,8 +33,8 @@ const BlogCard = memo(({ authorName, BlogerId, type, authorPic, content, publish
                         {authorPic == "" ? title : title}
                     </h1>
                     {
-                        type !== "/Profile" && <div className='flex justify-center  w-full h-[50vw] '>
-                            <Img className='w-full  h-full rounded-lg ' st='100' val={avatar} />
+                        type !== "/Profile" && <div className='flex justify-center  w-full  '>
+                            <Img className='w-full rounded-lg ' st='100' val={avatar} />
 
                         </div>
                     }

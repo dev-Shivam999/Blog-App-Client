@@ -9,7 +9,7 @@ const Up = () => {
   const [show, setShow] = useState<boolean>(true)
   return (
     <div className="relative h-[80vh] w-full  ">
-      <div className=" tt  absolute top-0 left-0   h-full w-full "></div>
+      <div className={` tt   absolute top-0 left-0   h-full w-full `}></div>
       <div className="absolute top-0    left-0 px-[4vw]   mix-blend-hard-light  h-full w-full text-3xl"
         style={{ backgroundColor: "rgb(253 247 147 / 47%)" }}>
           
@@ -17,7 +17,7 @@ const Up = () => {
           <div>
 
             {
-              window.innerWidth > 550 ? <Link to={'/Blogs'}><h1 className='text-[4vw] sm:text-[2vw]  font-semibold text-end' >BLOGS</h1></Link>
+              window.innerWidth > 550 ? <Link to={'/Blogs'}><h1 className='text-[3vw] sm:text-[2vw]  font-semibold text-end' >BLOGS</h1></Link>
 :
             show ?
               <FaEquals onClick={() => setShow(false)} />

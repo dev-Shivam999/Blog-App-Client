@@ -18,8 +18,14 @@ body::-webkit-scrollbar-thumb {
   background-image: url("/one.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position-y:-10vw ;
 }
-
+@media (max-width: 370px){
+  .tt{
+background-position-y: 0;
+background-position-x: -20vw;
+  }
+}
 .glass::-webkit-scrollbar {
   display: none;
 }
