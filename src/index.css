@@ -20,7 +20,7 @@ body::-webkit-scrollbar-thumb {
   background-repeat: no-repeat;
   background-position-y:-10vw ;
 }
-@media (max-width: 370px){
+@media (max-width: 400px){
   .tt{
 background-position-y: 0;
 background-position-x: -20vw;

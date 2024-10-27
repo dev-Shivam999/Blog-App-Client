@@ -1,5 +1,5 @@
-import { memo, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { memo, useEffect } from 'react';
+import {  useLocation, useNavigate, useParams } from 'react-router-dom';
 import Follow from './Follow';
 import BloggerInfo from './BlogerInfo';
 import EditsProfile from './EditsProfile';
@@ -11,9 +11,8 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 import Img from './Img';
-import Nav2 from './Nav2';
-import { BookLoaderComponent } from './Loading';
-import { FaEquals, FaX } from 'react-icons/fa6';
+import { BookLoaderComponent } from './Loading';;
+import NowNav from './Now-nav';
 
 const Pro = memo(({ show }: { show: true | false }) => {
     const { id } = useParams()
@@ -67,7 +66,6 @@ const Pro = memo(({ show }: { show: true | false }) => {
 
     }, [])
 
-    const [show2, setShow] = useState<boolean>(true)
     const { Loading, user } = useSelector((state: InitialState2) => state.c)
 
 
@@ -79,38 +77,7 @@ const Pro = memo(({ show }: { show: true | false }) => {
     return (
         <div className='p-4'>
 
-            <div className='flex justify-between items-center'>
-                <Nav2 />
-                <div className='justify-end'>
-
-                    {
-                        window.innerWidth > 550 ? <Link to={'/Blogs'}><h1 className='text-[4vw] sm:text-[2vw]  font-semibold text-end' >BLOGS</h1></Link>
-                            :
-                            show2 ?
-                                <FaEquals className='text-[8vw]  sm:text-[4vw]' onClick={() => setShow(false)} />
-                                :
-                                <FaX className='text-[8vw]  sm:text-[4vw]' onClick={() => setShow(true)} />
-
-                    }
-
-                </div>
-            </div>
-                    <  >
-                        {
-                            !show2 &&
-                            <ul className=''>
-
-                                <li>
-                                    <Link to={'/Blogs'}><h1 className='text-[4vw] sm:text-[2vw]  my-3 font-semibold text-end' >BLOGS</h1></Link>
-
-                                </li>
-
-
-
-                            </ul>
-
-                        }
-                    </>
+         <NowNav/>
 
             {
                 Loading ? <BookLoaderComponent /> :

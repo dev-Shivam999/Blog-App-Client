@@ -2,13 +2,13 @@
 import Quote from '../components/Quote';
 import Auth from '../components/Auth';
 import { memo } from 'react';
-import Nav2 from '../components/Nav2';
+import NowNav from '../components/Now-nav';
 
 const Sign = memo(() => {
     return (
         
        <>
-            <div className='p-3 grid grid-cols-2 text-3xl font-bold'>  <Nav2 /></div>
+            <div className='p-3 '>  <NowNav /></div>
 
             <div className='sm:text-3xl  grid md:grid-cols-2 grid-cols-1 font-bold'>
                 <div className='h-screen '>
