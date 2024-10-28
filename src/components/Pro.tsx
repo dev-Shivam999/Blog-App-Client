@@ -99,6 +99,7 @@ const Pro = memo(({ show }: { show: true | false }) => {
 
                                 <div className='md:w-1/2 '>
                                     <div className='flex'>
+              
                                         <Follow f='Follower' c={user?.Followers.length!} />
                                         <Follow f='Follow' c={user?.Following.length!} />
                                     </div>
