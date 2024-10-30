@@ -38,10 +38,11 @@ background-position-x: -20vw;
   color: black;
 }
 
+@media (min-width: 500px) {
 body {
   cursor: none;
 }
-
+}
 .glass {
   background: rgb(255, 255, 255, 0.43);
   border-radius: 16px;

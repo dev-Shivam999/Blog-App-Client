@@ -1,16 +1,13 @@
 
 import { memo } from 'react';
 import MakeFollow from './MakeFollow';
-import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
-const Fm = memo(() => {
+const Fm = memo(({id}:{id:string}) => {
     return (
         <div className='flex gap-5'>
             <MakeFollow/>
-                <div onClick={()=>toast("coming soon..",{style:{
-                    border: "5px solid lightgreen",
-                    borderRadius:12
-                }})} className='bg-zinc-300 cursor-pointer p-2 border-2 border-zinc-800 rounded-md'>Message</div>
+                <Link to={`/Chat/${id}`} className='bg-zinc-300 cursor-pointer p-2 border-2 border-zinc-800 rounded-md'>Message</Link>
         </div>
     );
 });

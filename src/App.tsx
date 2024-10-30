@@ -11,11 +11,14 @@ import BloggerProfile from './pages/BloggerProfile';
 import Edits from './pages/Edits';
 import Home from './pages/Home';
 import Move from './components/Move';
+import Chat from './pages/Chat';
 
 const App = memo(() => {
   return (
     <div className='bg-black  min-h-screen text-white'>
-      <Move/>
+     {
+        window.innerWidth > 500 && <Move />
+     }
 
       <Routes>
         <Route element={<Sign/>} path='/sign'/>
@@ -28,6 +31,7 @@ const App = memo(() => {
         <Route element={<Create/>} path='/create'/>
         <Route element={<Create/>} path='/pic'/>
         <Route element={<Edits/>} path='/Edits'/>
+          <Route element={<Chat/>} path='/Chat/:id'/>
       </Routes>
  
     </div>

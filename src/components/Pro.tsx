@@ -107,7 +107,7 @@ const Pro = memo(({ show }: { show: true | false }) => {
                                 </div>
 
                                 {
-                                    show ? <EditsProfile /> : <Fm />
+                                    show ? <EditsProfile /> : <Fm id={user&&String(user.id)} />
                                 }
 
 
