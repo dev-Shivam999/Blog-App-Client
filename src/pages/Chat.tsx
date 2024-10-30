@@ -9,7 +9,7 @@ import { io } from "socket.io-client";
 
 const Chat = () => {
 
-    const socket = useMemo(() => io("http://localhost:3000"), []);
+    const socket = useMemo(() => io(`${import.meta.env.VITE_SOME_KEY}`), []);
     const { id } = useParams()
     useEffect(() => {
         socket.on("message", (data) => {
