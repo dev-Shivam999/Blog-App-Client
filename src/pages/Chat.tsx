@@ -3,24 +3,22 @@ import ChatNav from "../components/ChatNav";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import { io } from "socket.io-client";
 
 
 
 const Chat = () => {
-
-    const socket = useMemo(() => io(`${import.meta.env.VITE_SOME_KEY}`), []);
+  
+    
+    
+    const newSocket = useMemo(() => new WebSocket(`${import.meta.env.VITE_SOME_KEY}`), []);
     const { id } = useParams()
     useEffect(() => {
-        socket.on("message", (data) => {
-            console.log(data);
-
-        });
-
-
-        return () => {
-            socket.off('message');
-        };
+       
+        newSocket.onmessage = (message) => {
+            console.log('Message received:', message.data);
+           
+        }
+        return () => newSocket.close();
     }, [])
     useEffect(() => {
 
