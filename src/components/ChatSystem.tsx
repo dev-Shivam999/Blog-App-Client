@@ -8,7 +8,7 @@ const ChatSystem = ({newSocket}:{newSocket:WebSocket}) => {
 
     const chat = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const data = { event: "chat", message: val, Send: id }
+        const data = { event: "chat", message: val, id: id }
         newSocket.send(JSON.stringify(data))
         setVal("")
     }

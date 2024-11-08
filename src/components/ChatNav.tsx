@@ -1,9 +1,10 @@
 import { FaArrowLeft } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import Img from "./Img";
+import { memo } from "react";
 
 
-const ChatNav = () => {
+const ChatNav = memo(() => {
     return (
         <div className="flex p-3 gap-3 items-center bg-zinc-800">
             <Link to={"/Blogs"}>
@@ -16,6 +17,6 @@ const ChatNav = () => {
             <h1>BLOGGER NAME LIKE</h1>
         </div>
     );
-};
+});
 
 export default ChatNav;

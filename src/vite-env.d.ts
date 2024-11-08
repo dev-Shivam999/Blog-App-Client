@@ -94,3 +94,9 @@ interface Info2 {
 interface Follow {
     id: string
 }
+
+
+interface Message{
+    val:string,
+    send:string
+}
