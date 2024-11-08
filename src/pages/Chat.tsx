@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import ChatNav from "../components/ChatNav";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import ChatSystem from "../components/ChatSystem";
 
 
 const Chat = () => {
@@ -11,12 +12,12 @@ const Chat = () => {
     const newSocket = useMemo(() => new WebSocket(`${import.meta.env.VITE_SOME_KEY}`), []);
     const { id } = useParams()
     useEffect(() => {
-        axios.post(`${import.meta.env.VITE_SOME_KEY}/user/Chat`,"none",{
+        axios.post(`${import.meta.env.VITE_SOME_KEY}/user/Chat`, "none", {
             headers: {
                 "Authorization": Number(id),
                 "Lol": Number(localStorage.getItem('token'))
             }
-        }).then(response =>console.log(response)).catch((e) => console.log(e))
+        }).then(response => console.log(response)).catch((e) => console.log(e))
 
         newSocket.onopen = () => {
             console.log('Connection established');
@@ -26,37 +27,28 @@ const Chat = () => {
         }
         newSocket.onmessage = (message) => {
             console.log('Message received:', message.data);
-            const val=JSON.parse(message.data)
-         if (val.event!="User") {
-             setName(p => [...p, val.message])
-         }
+            const val = JSON.parse(message.data)
+            if (val.event != "User") {
+                setName(p => [...p, val.message])
+            }
         }
-       
+
         return () => newSocket.close();
     }, [])
-   
-    const[val,setVal]=useState("")
-    const chat = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        const data={event:"chat",message:val,Send:id}
-        newSocket.send(JSON.stringify(data))
-    }
-    const[name,setName]=useState<String[]>([])
+    const [name, setName] = useState<String[]>([])
     return (
         <div className="relative min-h-screen">
             <ChatNav />
+            <ChatSystem newSocket={newSocket} />
 
 
-            <form className="fixed bottom-0 w-full bg-black " onSubmit={(e) => chat(e)}>
-                <input type="text" className="bg-transparent p-2 outline-none rounded-xl w-2/4 border-[3px] border-white " onChange={(e)=>setVal(e.target.value)} />
-            </form>
-           <div  className="pb-12">
+            <div className="pb-12">
                 {
                     name.map(p =>
                         <div>{p}</div>
                     )
                 }
-           </div>
+            </div>
         </div>
     );
 };
