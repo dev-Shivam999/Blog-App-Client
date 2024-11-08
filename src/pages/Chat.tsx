@@ -11,12 +11,12 @@ const Chat = () => {
     const newSocket = useMemo(() => new WebSocket(`${import.meta.env.VITE_SOME_KEY}`), []);
     const { id } = useParams()
     useEffect(() => {
-        // axios.post(`${import.meta.env.VITE_SOME_KEY}/user/Chat`,"none",{
-        //     headers: {
-        //         "Authorization": Number(id),
-        //         "Lol": Number(localStorage.getItem('token'))
-        //     }
-        // }).then(response =>console.log(response)).catch((e) => console.log(e))
+        axios.post(`${import.meta.env.VITE_SOME_KEY}/user/Chat`,"none",{
+            headers: {
+                "Authorization": Number(id),
+                "Lol": Number(localStorage.getItem('token'))
+            }
+        }).then(response =>console.log(response)).catch((e) => console.log(e))
 
         newSocket.onopen = () => {
             console.log('Connection established');
@@ -26,7 +26,10 @@ const Chat = () => {
         }
         newSocket.onmessage = (message) => {
             console.log('Message received:', message.data);
-         setName(p=>[...p,message.data])
+            const val=JSON.parse(message.data)
+         if (val.event!="User") {
+             setName(p => [...p, val.message])
+         }
         }
        
         return () => newSocket.close();
@@ -35,7 +38,7 @@ const Chat = () => {
     const[val,setVal]=useState("")
     const chat = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const data={event:"chat",message:val}
+        const data={event:"chat",message:val,Send:id}
         newSocket.send(JSON.stringify(data))
     }
     const[name,setName]=useState<String[]>([])
