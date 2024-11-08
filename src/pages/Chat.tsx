@@ -5,57 +5,12 @@ import { useParams } from "react-router-dom";
 import ChatSystem from "../components/ChatSystem";
 
 const Chat = () => {
+    const newSocket = useMemo(() => new WebSocket(`${import.meta.env.VITE_SOME_KEY2}`), []);
+    console.log(import.meta.env.VITE_SOME_KEY2);
+
     const { id } = useParams();
     const [name, setName] = useState<Message[]>([]);
 
-    // Initialize WebSocket connection only once
-    const newSocket = useMemo(() => new WebSocket(`${import.meta.env.VITE_SOME_KEY}`), []);
-
-    // WebSocket event handlers
-    const handleOpen = useCallback(() => {
-        console.log('Connection established');
-        const user = localStorage.getItem('token');
-        const User = { event: "User", id: user };
-        newSocket.send(JSON.stringify(User));
-    }, [newSocket]);
-
-    const handleMessage = useCallback((message:any) => {
-        console.log('Message received:', message.data);
-        const val = JSON.parse(message.data);
-        if (val.event !== "User" && val.event !== "Notification") {
-            setName(prev => [...prev, { val: val.message, send: val.sendTo }]);
-        } else if (val.event === "Notification") {
-            // Handle notifications if necessary
-            console.log(val);
-            
-            alert(`${val.message}`);
-            // Optionally set a notification state here if you want to display them separately
-        }
-    }, []);
-
-    const handleError = useCallback((error:any) => {
-        console.error('WebSocket error:', error);
-    }, []);
-
-    const handleClose = useCallback(() => {
-        console.log('WebSocket connection closed');
-        // Optionally implement reconnection logic here
-    }, []);
-
-    useEffect(() => {
-        // Attach WebSocket event listeners
-        newSocket.onopen = handleOpen;
-        newSocket.onmessage = handleMessage;
-        newSocket.onerror = handleError;
-        newSocket.onclose = handleClose;
-
-        // Cleanup on component unmount
-        return () => {
-            newSocket.close();
-        };
-    }, [newSocket, handleOpen, handleMessage, handleError, handleClose]);
-
-    // Initial API call to register the chat session
     useEffect(() => {
         axios.post(`${import.meta.env.VITE_SOME_KEY}/user/Chat`, "none", {
             headers: {
@@ -63,9 +18,58 @@ const Chat = () => {
                 "Lol": Number(localStorage.getItem('token'))
             }
         })
-            .then(response => console.log(response))
+            .then(response => {
+                setName(response.data.message.content)
+            }
+            )
+
+
             .catch(error => console.log("API Error:", error));
     }, [id]);
+
+    const handleOpen = useCallback(() => {
+        console.log('Connection established');
+        const user = localStorage.getItem('token');
+        const User = { event: "User", id: user };
+        newSocket.send(JSON.stringify(User));
+    }, [newSocket]);
+
+    const handleMessage = useCallback((message: any) => {
+        console.log('Message received:', message.data);
+        const val = JSON.parse(message.data);
+        if (val.event == "notFound") alert("Not Found");
+        if (val.event !== "User" && val.event !== "Notification") {
+            setName(prev => [...prev, { content: val.content, sendTo: val.sendTo }]);
+        } else if (val.event === "Notification") {
+
+
+
+            alert(`${val.message}`);
+        }
+    }
+        , []);
+
+    const handleError = useCallback((error: any) => {
+        console.error('WebSocket error:', error);
+    }, []);
+
+    const handleClose = useCallback(() => {
+        console.log('WebSocket connection closed');
+    }, []);
+
+    useEffect(() => {
+
+        newSocket.onopen = handleOpen
+        newSocket.onmessage = handleMessage
+        newSocket.onclose = handleClose
+        newSocket.onerror = handleError
+
+        return () => {
+            newSocket.close();
+        };
+    }, []);
+
+
 
     return (
         <div className="relative min-h-screen">
@@ -76,10 +80,10 @@ const Chat = () => {
                 <div className="flex flex-col">
                     {name.map((p, i) => (
                         <div
-                            className={`px-5 text-2xl font-bold ${p.send === id ? "self-start" : "self-end"}`}
+                            className={`px-5 text-2xl font-bold ${p.sendTo === id ? "self-start" : "self-end"}`}
                             key={i}
                         >
-                            {p.val}
+                            {p.content}
                         </div>
                     ))}
                 </div>

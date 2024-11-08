@@ -97,6 +97,8 @@ interface Follow {
 
 
 interface Message{
-    val:string,
-    send:string
+    content:string,
+    
+    sendTo:string
 }
+

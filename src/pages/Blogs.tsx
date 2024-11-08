@@ -10,8 +10,8 @@ import FirstCard from '../components/FirstCard';
 import { BookLoaderComponent } from '../components/Loading';
 
 const Blogs = () => {
-      const dispatch = useDispatch();
-    
+
+    const dispatch = useDispatch();
     useEffect(() => {
 
         axios.post(`${import.meta.env.VITE_SOME_KEY}/user/All`, "none", {

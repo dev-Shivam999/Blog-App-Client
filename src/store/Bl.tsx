@@ -23,7 +23,8 @@ const initialState: InitialState2 = {
             img: "",
             data: 0
         }
-    }
+    },
+    
 
 };
 
