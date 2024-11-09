@@ -95,7 +95,7 @@ const Chat = () => {
                     <ChatNav user={User} />
                     <ChatSystem newSocket={newSocket} />
 
-                    <div className="pb-12">
+                    <div className="py-[100px]">
                         <div className="flex flex-col">
                             {name.map((p, i) => (
                                 <div key={i} className={`px-5  ${p.sendTo === id ? "self-start" : "self-end"}`}
