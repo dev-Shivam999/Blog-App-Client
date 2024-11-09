@@ -4,17 +4,23 @@ import Img from "./Img";
 import { memo } from "react";
 
 
-const ChatNav = memo(() => {
+const ChatNav = memo(({ user }: {
+    user: {
+        img: string
+        name: string
+    }
+}) => {
+
     return (
         <div className="flex p-3 gap-3 items-center bg-zinc-800">
             <Link to={"/Blogs"}>
                 <FaArrowLeft className="text-2xl" />
             </Link>
             <div className="w-[50px]">
-                <Img className='w-full  rounded-lg ' st='100' val={"/FIRST.png"} />
+                <Img className=' rounded-[50%] ' st='100' val={`${user.img}`} />
 
             </div>
-            <h1>BLOGGER NAME LIKE</h1>
+            <h1>{user.name}</h1>
         </div>
     );
 });

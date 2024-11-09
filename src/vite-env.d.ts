@@ -98,7 +98,8 @@ interface Follow {
 
 interface Message{
     content:string,
-    
+
+    CreateAt:string
     sendTo:string
 }
 
