@@ -105,7 +105,7 @@ const Chat = () => {
                                     >
                                         {p.content}
                                     </div>
-                                    <span className={`block w-full ${p.sendTo != id ? "text-end" : "text-start"} text-xs text-zinc-600`}>{`${p.CreateAt.toString().split(":")[0]}`}{":"}{`${p.CreateAt.toString().split(":")[1]}`}</span>
+                                    <span className={`block w-full ${p.sendTo != id ? "text-end" : "text-start"} text-xs text-zinc-600`}>{`${p.CreateAt.split(":")[0]}`}{":"}{`${p.CreateAt.split(":")[1]}`}</span>
 
                                 </div>))}
                         </div>

@@ -16,7 +16,7 @@ const ChatSystem = ({newSocket}:{newSocket:WebSocket}) => {
     }
    
     return (
-        <form className=" bottom-0 px-2 sm:w-full flex bg-black border-white rounded-xl border-[3px] sm:pe-3 " onSubmit={(e) => chat(e)}>
+        <form className="fixed px-2 bottom-0 sm:w-full flex bg-black border-white rounded-xl border-[3px] sm:pe-3 " onSubmit={(e) => chat(e)}>
             <input type="text" value={val} className="bg-transparent p-2 outline-none  w-full  " onChange={(e) => setVal(e.target.value)} />
             <button className='text-2xl -rotate-45'><MdSend/></button>
         </form>
