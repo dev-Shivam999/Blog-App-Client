@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { MdSend } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 
 const ChatSystem = ({newSocket}:{newSocket:WebSocket}) => {
@@ -15,8 +16,9 @@ const ChatSystem = ({newSocket}:{newSocket:WebSocket}) => {
     }
    
     return (
-        <form className="fixed bottom-0 w-full bg-black " onSubmit={(e) => chat(e)}>
-            <input type="text" value={val} className="bg-transparent p-2 outline-none rounded-xl w-2/4 border-[3px] border-white " onChange={(e) => setVal(e.target.value)} />
+        <form className="fixed bottom-0 w-full flex bg-black border-white rounded-xl border-[3px] sm:pe-3 " onSubmit={(e) => chat(e)}>
+            <input type="text" value={val} className="bg-transparent p-2 outline-none  w-full  " onChange={(e) => setVal(e.target.value)} />
+            <button className='text-2xl -rotate-45'><MdSend/></button>
         </form>
     );
 };

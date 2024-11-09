@@ -12,7 +12,7 @@ const ChatNav = memo(({ user }: {
 }) => {
 
     return (
-        <div className="flex p-3 gap-3 items-center bg-zinc-800">
+        <div className="flex fixed w-full p-3 gap-3 items-center bg-zinc-800">
             <Link to={"/Blogs"}>
                 <FaArrowLeft className="text-2xl" />
             </Link>

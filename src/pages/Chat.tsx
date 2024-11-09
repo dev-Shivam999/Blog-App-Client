@@ -27,6 +27,8 @@ const Chat = () => {
                 setName(response.data.message)
                 SetUser(response.data.sendTo)
                 setLoading(false)
+                console.log("ji");
+                
             }
             )
 
@@ -87,26 +89,30 @@ const Chat = () => {
     if (Loadings) <BookLoaderComponent />
 
     return (
-        <div className="relative min-h-screen">
-            <ChatNav user={User} />
-            <ChatSystem newSocket={newSocket} />
+        <>
+       {
+                Loadings ? <BookLoaderComponent /> : <div className="relative min-h-screen">
+                    <ChatNav user={User} />
+                    <ChatSystem newSocket={newSocket} />
 
-            <div className="pb-12">
-                <div className="flex flex-col">
-                    {name.map((p, i) => (
-                        <div key={i} className={`px-5  ${p.sendTo === id ? "self-start" : "self-end"}`}
-                        >
-                            <div className="text-2xl font-bold"
+                    <div className="pb-12">
+                        <div className="flex flex-col">
+                            {name.map((p, i) => (
+                                <div key={i} className={`px-5  ${p.sendTo === id ? "self-start" : "self-end"}`}
+                                >
+                                    <div className="text-2xl font-bold"
 
-                            >
-                                {p.content}
-                            </div>
-                            <span className={`block w-full ${p.sendTo != id ? "text-end" : "text-start"} text-xs text-zinc-600`}>{`${p.CreateAt.toString().split(":")[0]}`}{":"}{`${p.CreateAt.toString().split(":")[1]}`}</span>
+                                    >
+                                        {p.content}
+                                    </div>
+                                    <span className={`block w-full ${p.sendTo != id ? "text-end" : "text-start"} text-xs text-zinc-600`}>{`${p.CreateAt.toString().split(":")[0]}`}{":"}{`${p.CreateAt.toString().split(":")[1]}`}</span>
 
-                        </div>))}
-                </div>
-            </div>
-        </div>
+                                </div>))}
+                        </div>
+                    </div>
+                </div>   
+    }
+    </>
     );
 };
 
