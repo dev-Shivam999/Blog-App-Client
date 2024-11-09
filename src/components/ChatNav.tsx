@@ -17,7 +17,7 @@ const ChatNav = memo(({ user }: {
                 <FaArrowLeft className="text-2xl" />
             </Link>
             <div className="w-[50px]">
-                <Img className=' rounded-[50%] ' st='100' val={`${user.img}`} />
+                <Img className='h-[50px]  rounded-[50%] ' st='100' val={`${user.img}`} />
 
             </div>
             <h1>{user.name}</h1>
