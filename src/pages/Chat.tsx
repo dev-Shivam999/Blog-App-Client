@@ -86,7 +86,6 @@ const Chat = () => {
     }, []);
 
 
-    if (Loadings) <BookLoaderComponent />
 
     return (
         <>
@@ -98,7 +97,7 @@ const Chat = () => {
                     <div className="py-[100px]">
                         <div className="flex flex-col">
                             {name.map((p, i) => (
-                                <div key={i} className={`px-5  ${p.sendTo === id ? "self-start" : "self-end"}`}
+                                <div key={i} className={`px-5  ${p.sendTo == id ? "self-start" : "self-end"}`}
                                 >
                                     <div className="text-2xl font-bold"
 
