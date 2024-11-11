@@ -104,7 +104,7 @@ const Chat = () => {
                                     >
                                         {p.content}
                                     </div>
-                                    <span className={`block w-full ${p.sendTo != id ? "text-end" : "text-start"} text-xs text-zinc-600`}>{`${p.CreateAt}`}</span>
+                                    <span className={`block w-full ${p.sendTo == id ? "text-end" : "text-start"} text-xs text-zinc-600`}>{`${p.CreateAt}`}</span>
 
                                 </div>))}
                         </div>
