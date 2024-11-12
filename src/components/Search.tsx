@@ -29,8 +29,8 @@ const Search = memo(() => {
            <input type="Search" placeholder="Friend" className="bg-transparent ps-6 relative left-1/2 -translate-x-1/2 border-2 rounded-lg border-white" onChange={(e) => SetValue(e.target.value)} />
             <ul>
                 {
-                    data && data.length > 0 && data?.map(p => p.id != Number(localStorage.getItem('token')) && 
-                  <SearchSystem p={p}/>)
+                    data && data.length > 0 ? data?.map(p => p.id != Number(localStorage.getItem('token')) && 
+                  <SearchSystem p={p}/>):value.trim()!=""&&<div> not found</div>
                 }
             </ul>
 
