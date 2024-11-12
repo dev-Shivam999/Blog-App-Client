@@ -17,7 +17,7 @@ interface BlogCard {
     avatar: string,
     img?: string
     type?: string
-    BlogerId:string
+    BlogerId: string
     Like: Link[],
 
 }
@@ -46,16 +46,16 @@ interface blog {
     Likes: Link[],
 
 }
-type Link={
-    blogerId:string
+type Link = {
+    blogerId: string
 }
 interface user {
     name: string,
     img: string
     data: number
     id: number
-    Likes:Link[]
-    Link?:Link[]
+    Likes: Link[]
+    Link?: Link[]
     blogs: blog[],
     Followers: [],
     Following: [],
@@ -67,7 +67,7 @@ interface InitialState2 {
         blogs: blogs[],
         loading: boolean,
         val: string,
-        su:boolean
+        su: boolean
     }
     c: Info2
 
@@ -77,7 +77,7 @@ interface InitialState {
     blogs: blogs[],
     loading: boolean,
     val: string,
-    su:boolean
+    su: boolean
 
 }
 
@@ -96,10 +96,26 @@ interface Follow {
 }
 
 
-interface Message{
-    content:string,
+interface Message {
+    content: string,
 
-    CreateAt:string
-    sendTo:string
+    CreateAt: string
+    sendTo: string
+}
+interface Message2 {
+    id?: number
+    img: string
+    name: string
+
+}
+
+interface ChatRoom {
+
+    id: string
+    SendTo: number,
+    ReciveFrom: number,
+    sendTo: Message2,
+    reciveFrom: Message2
+
 }
 

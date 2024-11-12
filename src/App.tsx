@@ -11,6 +11,7 @@ import Edits from './pages/Edits';
 import Home from './pages/Home';
 import Move from './components/Move';
 import Chat from './pages/Chat';
+import Message from './pages/Message';
 
 const App = memo(() => {
 
@@ -32,6 +33,7 @@ const App = memo(() => {
         <Route element={<Create />} path='/pic' />
         <Route element={<Edits />} path='/Edits' />
         <Route element={<Chat />} path='/Chat/:id' />
+        <Route element={<Message />} path='/Message' />
       </Routes>
 
     </div>
