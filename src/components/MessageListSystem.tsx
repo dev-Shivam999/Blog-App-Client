@@ -18,7 +18,7 @@ const MessageListSystem = memo(() => {
     return (
         <>
             {
-                data && data.length > 0 && data.map((p,i) => <MessageList i={i} p={p} />)
+                data && data.length > 0 && data.map((p,i) =>p._count.content>0&& <MessageList i={i} p={p} />)
             }
         </>
 

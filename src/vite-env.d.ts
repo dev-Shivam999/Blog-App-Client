@@ -113,6 +113,9 @@ interface ChatRoom {
 
     id: string
     SendTo: number,
+    _count: {
+        content:number
+    }
     ReciveFrom: number,
     sendTo: Message2,
     reciveFrom: Message2
