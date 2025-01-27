@@ -20,6 +20,7 @@ const Auth = memo(({ type }: { type: "sign in" | "sign up"|"edits" }) => {
     const lo=useLocation()
     const edits=async()=>{
         await axios.post(`${import.meta.env.VITE_SOME_KEY}/user/profile`, "none", {
+            
             headers: {
                 "Authorization": Number(localStorage.getItem('token')),
                 "Location": String(lo.pathname)
