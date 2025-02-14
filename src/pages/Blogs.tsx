@@ -35,7 +35,7 @@ const Blogs = () => {
     const breakpointColumnsObj = {
         default: 4,
         1100: 4,
-        992: 3,
+        992: 4,
         768: 2,
         576: 1
     };
@@ -52,8 +52,8 @@ const Blogs = () => {
                     <FirstCard Like={blogs[0]?.Likes!} authorName={blogs[0].authore.name} authorPic={blogs[0].authore.img} content={blogs[0].content} publishedDate={blogs[0].created} id={blogs[0].id} BlogerId={blogs[0].authore.id} title={blogs[0].title} avatar={blogs[0].avtar} />
                     <Masonry
                         breakpointCols={breakpointColumnsObj}
-                        className="flex flex-wrap gap-1 my-masonry-grid"
-                        columnClassName="my-masonry-grid_column">
+                        className="   flex gap-1 my-masonry-grid"
+                        columnClassName="my-masonry-grid_column" style={{ width: "100%" }}>
                         {
                             blogs.map((p, i) => i !== 0 && <BlogCard key={p.id} Like={p?.Likes!} authorName={p.authore.name} authorPic={p.authore.img} content={p.content} publishedDate={p.created} id={p.id} BlogerId={p.authore.id} title={p.title} avatar={p.avtar} />)
                         }

@@ -14,7 +14,7 @@ const BlogCard = memo(({ authorName, BlogerId, type, authorPic, content, publish
 
 
     return (
-        <div style={{ fontFamily: "math" }} className='block m-2 border-2 rounded-sm p-3 border-white'>
+        <div style={{ fontFamily: "math" }} className='block m-2 border-2 w-full max-w-full rounded-sm p-3 border-white'>
             <div className=' flex  justify-between items-center text-gray-400 text-xl sm:text-2xl '>
                 <Link to={`/BloggerProfile/${BlogerId}`} className='flex  gap-4'>
 
