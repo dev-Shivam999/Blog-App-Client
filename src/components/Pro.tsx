@@ -13,6 +13,7 @@ import toast from 'react-hot-toast';
 import Img from './Img';
 import { BookLoaderComponent } from './Loading';;
 import NowNav from './Now-nav';
+import Masonry from 'react-masonry-css';
 
 const Pro = memo(({ show }: { show: true | false }) => {
     const { id } = useParams()
@@ -71,7 +72,13 @@ const Pro = memo(({ show }: { show: true | false }) => {
 
 
 
-
+    const breakpointColumnsObj = {
+        default: 4,
+        1100: 4,
+        992: 4,
+        768: 2,
+        576: 1
+    };
 
 
     return (
@@ -122,12 +129,16 @@ const Pro = memo(({ show }: { show: true | false }) => {
                             <div>
                                 <div className=' mt-3 text-center md:mt-14 sm:mt-6 md:text-center text-3xl font-bold font-math'>{show ? "Your" : "Their"} Blogs</div>
                             </div>
-                            <div className='grid grid-cols-1 sm:grid-cols-2 '>
+                               <Masonry
+                                                    breakpointCols={breakpointColumnsObj}
+                                                    className="   flex gap-1 my-masonry-grid"
+                                                    columnClassName="my-masonry-grid_column" style={{ width: "100%" }}>
+                                                    
 
                                 {
                                     user?.blogs && user?.blogs && user?.blogs.map(blog => <BlogCard BlogerId={String(user.id)} authorName={user?.name} Like={blog.Likes} authorPic={user?.img} type={String(lo.pathname)} avatar={blog.avtar} content={blog.content} publishedDate={blog.created} title={blog.title} id={blog.id} img={blog.avtar} key={blog.id} />)
                                 }
-                            </div>
+                            </Masonry>
 
                         </div>
                     </>
